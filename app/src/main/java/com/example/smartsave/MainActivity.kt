@@ -19,5 +19,6 @@ class MainActivity : AppCompatActivity() {
         }
         //TODO: COMENZAR PROYECTO SMARTSAVE
         var hola_mundo = findViewById<TextView>(R.id.hola)
+        hola_mundo.text = "Hola esto es SmartSave"
     }
 }
