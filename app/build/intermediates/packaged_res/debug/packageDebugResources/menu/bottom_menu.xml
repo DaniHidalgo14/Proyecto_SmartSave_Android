@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:title="Inicio"
+        android:icon="@drawable/main_iv"/>
+
+    <item
+        android:id="@+id/movesFragment"
+        android:title="Movimientos"
+        android:icon="@drawable/movimientos_iv"/>
+
+    <item
+        android:id="@+id/configFragment"
+        android:title="Configuración"
+        android:icon="@drawable/iv_config"/>
+</menu>

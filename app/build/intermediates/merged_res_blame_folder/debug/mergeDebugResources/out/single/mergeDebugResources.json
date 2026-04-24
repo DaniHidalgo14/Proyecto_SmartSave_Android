@@ -1,0 +1,226 @@
+[
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.smartsave.app-debug-50:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.smartsave.app-main-52:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\drawable_iv_config.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\drawable\\iv_config.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\drawable_movimientos_iv.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\drawable\\movimientos_iv.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.smartsave.app-debug-50:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.smartsave.app-main-52:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\layout_fragment_config.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\layout\\fragment_config.xml"
+    },
+    {
+        "merged": "com.example.smartsave.app-debug-50:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.smartsave.app-main-52:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\drawable_anadir_iv.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\drawable\\anadir_iv.xml"
+    },
+    {
+        "merged": "com.example.smartsave.app-debug-50:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.smartsave.app-main-52:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\drawable_gradient_bg.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\drawable\\gradient_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-mdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.smartsave.app-debug-50:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.smartsave.app-main-52:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "com.example.smartsave.app-debug-50:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.smartsave.app-main-52:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.smartsave.app-debug-50:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.smartsave.app-main-52:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.smartsave.app-debug-50:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.smartsave.app-main-52:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\layout_fragment_moves.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\layout\\fragment_moves.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\menu_bottom_menu.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\menu\\bottom_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.smartsave.app-debug-50:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.smartsave.app-main-52:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.smartsave.app-debug-50:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.smartsave.app-main-52:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\drawable_main_iv.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\drawable\\main_iv.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-hdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\layout_fragment_home.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.smartsave.app-debug-50:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.smartsave.app-main-52:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\drawable_pass_visible.xml.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\drawable\\pass_visible.xml"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-xhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-debug-50:\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Dani\\.gradle\\daemon\\8.13\\com.example.smartsave.app-main-52:\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "com.example.smartsave.app-debug-50:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.smartsave.app-main-52:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.smartsave.app-debug-50:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.smartsave.app-main-52:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    }
+]

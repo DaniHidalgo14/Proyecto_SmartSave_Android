@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="ic_launcher_background">#989898</color>
+    <color name="success">#28A745</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">SmartSave</string>
+    <string name="contraseña">Contraseña: </string>
+    <string name="subtitulo_login">Tu app de finanzas mas segura</string>
+    <string name="text_botom">Acceder</string>
+    <string name="titulo_login">Bienvenido a SmartSave</string>
+    <string name="usuario">Usuario: </string>
+    <style name="Base.Theme.SmartSave" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.SmartSave" parent="Base.Theme.SmartSave"/>
+</resources>
