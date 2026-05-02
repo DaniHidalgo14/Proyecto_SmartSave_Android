@@ -3,4 +3,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="success">#28A745</color>
+    <color name="bg_card">#18171A</color>
+    <color name="secondary">#1100FF</color>
 </resources>

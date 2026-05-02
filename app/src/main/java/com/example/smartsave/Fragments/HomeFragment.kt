@@ -5,12 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.example.smartsave.R
+import com.example.smartsave.controller.Controller
+import com.example.smartsave.databinding.FragmentHomeBinding
+import com.example.smartsave.model.Usuario
+import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+
+private var _binding: FragmentHomeBinding? = null
+private val binding get() = _binding!!
 
 /**
  * A simple [Fragment] subclass.
@@ -35,7 +43,29 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        _binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        return binding.root
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val usuario = arguments?.getSerializable("usuario") as? Usuario
+        val controlador = Controller()
+        var ingresos_totales : Double? = 0.0
+        var gastos_totales : Double?  = 0.0
+        var ingreso_mensual : Double?  = 0.0
+
+        lifecycleScope.launch {
+            ingresos_totales = controlador.obtenerTotalIng(usuario?.id)
+            gastos_totales = controlador.obtenerTotalGas(usuario?.id)
+            ingreso_mensual = controlador.obtenerIngresosMensual(usuario?.id)
+
+            binding.totGas.setText("$ingresos_totales €")
+            binding.totIng.setText("$gastos_totales €")
+            binding.ingresoMensual.text = "$ingreso_mensual €"
+        }
+
     }
 
     companion object {

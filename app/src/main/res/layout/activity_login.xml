@@ -8,9 +8,18 @@
     android:background="@drawable/gradient_bg"
     tools:context=".LoginActivity">
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/icono_iv"
+        android:layout_margin="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="400dp"
         android:layout_margin="20dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,28 +29,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-            <TextView
-                android:id="@+id/titulo"
-                android:layout_width="match_parent"
-                android:layout_height="34dp"
-                android:layout_margin="20dp"
-                android:text="@string/titulo_login"
-                android:textSize="24sp"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <TextView
                 android:id="@+id/subtitulo"
                 android:layout_width="match_parent"
                 android:layout_height="26dp"
                 android:text="@string/subtitulo_login"
                 android:textAlignment="center"
+                android:layout_margin="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/titulo" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvUsuario"
@@ -88,6 +85,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvContraseña" >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -108,7 +106,7 @@
                 android:text="@string/text_botom"
                 android:backgroundTint="@color/black"
                 android:textSize="20sp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tilcontraseña" />

@@ -7,6 +7,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.example.smartsave.Fragments.ConfigFragment
+import com.example.smartsave.Fragments.HomeFragment
+import com.example.smartsave.Fragments.MovesFragment
+import com.example.smartsave.model.Usuario
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +23,7 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val usuario = intent.getSerializableExtra("Usuario") as Usuario
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
                 as NavHostFragment
@@ -26,5 +31,9 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottomNav.setupWithNavController(navController)
+
+        navController.navigate(R.id.homeFragment, Bundle().apply{
+            putSerializable("usuario", usuario)
+        })
     }
 }
