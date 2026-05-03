@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.smartsave.R
 import com.example.smartsave.controller.Controller
 import com.example.smartsave.databinding.FragmentHomeBinding
 import com.example.smartsave.model.Usuario
+import com.example.smartsave.model.UsuarioViewModel
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
@@ -19,6 +21,7 @@ private const val ARG_PARAM2 = "param2"
 
 private var _binding: FragmentHomeBinding? = null
 private val binding get() = _binding!!
+private lateinit var usuarioViewModel: UsuarioViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -50,7 +53,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val usuario = arguments?.getSerializable("usuario") as? Usuario
+        usuarioViewModel = ViewModelProvider(requireActivity())
+            .get(UsuarioViewModel::class.java)
+
+        val usuario = usuarioViewModel.usuario
         val controlador = Controller()
         var ingresos_totales : Double? = 0.0
         var gastos_totales : Double?  = 0.0

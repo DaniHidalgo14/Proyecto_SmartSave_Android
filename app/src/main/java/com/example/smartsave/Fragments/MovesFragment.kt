@@ -5,18 +5,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.smartsave.Adapter.MovAdapter
 import com.example.smartsave.R
 import com.example.smartsave.controller.Controller
 import com.example.smartsave.databinding.FragmentHomeBinding
 import com.example.smartsave.databinding.FragmentMovesBinding
+import com.example.smartsave.model.Movimiento
+import com.example.smartsave.model.Usuario
+import com.example.smartsave.model.UsuarioViewModel
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+private lateinit var adapter : MovAdapter
+private lateinit var usuarioViewModel: UsuarioViewModel
 
 private var _binding: FragmentMovesBinding? = null
 private val binding get() = _binding!!
@@ -51,13 +58,18 @@ class MovesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val controlador = Controller()
-        //TODO: Meter usuario y comporbar que sale la lista
+        usuarioViewModel = ViewModelProvider(requireActivity())
+            .get(UsuarioViewModel::class.java)
+
+        val usuario = usuarioViewModel.usuario
 
         val recycler = binding.movimientos
         recycler.layoutManager = LinearLayoutManager(requireContext())
 
         lifecycleScope.launch {
-            val moves = controlador.obtenerMovimientos()
+            var moves = controlador.obtenerMovimientos(usuario?.id)
+            adapter = MovAdapter(moves!!)
+            recycler.adapter = adapter
         }
     }
 

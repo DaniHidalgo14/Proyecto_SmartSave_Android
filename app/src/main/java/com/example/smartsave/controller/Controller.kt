@@ -35,6 +35,7 @@ class Controller {
             var movimientos = client.postgrest["Movimientos"].select {
                 filter { eq("id_usuario", userId!!) }
             }.decodeList<Movimiento>()
+            println("Movimiento: $movimientos")
             movimientos
         }catch (e : Exception){
             e.printStackTrace()
