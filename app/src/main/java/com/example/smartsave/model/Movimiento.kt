@@ -11,5 +11,6 @@ data class Movimiento(
     @SerialName("Cantidad") val cantidad : Double,
     @SerialName("Fijo") val fijo : Int,
     @SerialName("id_usuario") val id_usuario : Int,
-    @SerialName("Categoria") val categoria : String
+    @SerialName("Categoria") val categoria : String,
+    @SerialName("Subcategoria") val subcategoria : String?
 ) : Serializable

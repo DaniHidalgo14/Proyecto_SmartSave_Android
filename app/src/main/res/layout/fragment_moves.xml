@@ -11,6 +11,7 @@
         android:id="@+id/headerCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="20dp"
         app:cardCornerRadius="28dp"
         app:cardElevation="4dp"
         app:cardBackgroundColor="?attr/colorSurface"
@@ -202,24 +203,12 @@
             android:layout_marginBottom="10dp"
             android:layout_marginStart="4dp" />
 
-        <!-- RecyclerView wrapped in a card -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="18dp"
-            app:cardElevation="0dp"
-            app:cardBackgroundColor="?attr/colorSurface"
-            app:strokeColor="?attr/colorOutlineVariant"
-            app:strokeWidth="1dp">
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/movimientos"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="350dp"
                 android:overScrollMode="never"
                 android:clipToPadding="false" />
-
-        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 
