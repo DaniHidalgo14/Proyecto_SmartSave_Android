@@ -1,11 +1,15 @@
 <resources>
     <!-- Strings de la pantalla de login -->
     <string name="app_name">SmartSave</string>
-    <string name="titulo_login">Bienvenido a SmartSave</string>
+    <string name="titulo_login">SmartSave</string>
     <string name="subtitulo_login">Tu app de finanzas mas segura</string>
+    <string name="tituloCard">Iniciar Sesion</string>
     <string name="usuario">Usuario: </string>
+    <string name="usuarioHint">Ej: miUsuario</string>
     <string name="contraseña">Contraseña: </string>
-    <string name="text_botom">Acceder</string>
+    <string name="passwordHint">Ej: micontraseña</string>
+    <string name="text_botom">Entrar</string>
+    <string name="text_registro">Registrarse</string>
 
     <!-- Strings pantalla de Movimientos -->
     <string name="titulo_mov">Mis movimientos</string>

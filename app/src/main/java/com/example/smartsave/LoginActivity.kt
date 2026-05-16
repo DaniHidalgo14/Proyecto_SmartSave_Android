@@ -23,16 +23,16 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
+        //TODO: MIRAR LO DEL HINT COMO PONER EL LAYOUT
         var miUsuario : Usuario? = null
         val controlador = Controller()
         var btnAcceder = findViewById<Button>(R.id.button)
         var usuarioTxt = findViewById<TextInputEditText>(R.id.usuario)
         var passWordTxt = findViewById<TextInputEditText>(R.id.password)
 
-        //TODO: PROBAR QUE LA SESION FUNCIONA AL VOLVER AL LOGIN SE DESACTIVA EL USUARIO
         usuarioTxt.setText("")
         passWordTxt.setText("")
 
@@ -46,6 +46,8 @@ class LoginActivity : AppCompatActivity() {
 
                 if(miUsuario?.id == null){
                     Toast.makeText(this@LoginActivity, "Error: usuario/contraseña incorrectos", Toast.LENGTH_LONG).show()
+                    usuarioTxt.setText("")
+                    passWordTxt.setText("")
                 }else{
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     intent.putExtra("Usuario", miUsuario)

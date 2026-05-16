@@ -5,6 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +21,10 @@ import com.example.smartsave.databinding.FragmentMovesBinding
 import com.example.smartsave.model.Movimiento
 import com.example.smartsave.model.Usuario
 import com.example.smartsave.model.UsuarioViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.launch
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -67,11 +75,69 @@ class MovesFragment : Fragment() {
         recycler.layoutManager = LinearLayoutManager(requireContext())
 
         lifecycleScope.launch {
+            var totalActual = BigDecimal(controlador.calcularTotal(usuario?.id)).setScale(2, RoundingMode.HALF_UP).toDouble()
+            binding.tvTotal.text = "${totalActual}€"
+
             var moves = controlador.obtenerMovimientos(usuario?.id)
             adapter = MovAdapter(moves!!)
             recycler.adapter = adapter
         }
+
+        //========================================================
+        //==== Ventana de insercion y edicion de movimientos =====
+        //========================================================
+        binding.btnIngresos.setOnClickListener {
+            val dialog = BottomSheetDialog(requireContext())
+            val view = layoutInflater.inflate(R.layout.insert_window, null)
+            dialog.setContentView(view)
+
+            // 1. Referencias a los elementos del layout del bottom sheet
+            val btnGuardar = view.findViewById<Button>(R.id.btnGuardar)
+            val btnIngreso = view.findViewById<Button>(R.id.btnIngreso)
+            val btnGasto = view.findViewById<Button>(R.id.btnGasto)
+            val spinnerCategoria = view.findViewById<Spinner>(R.id.spinnerCategoria)
+            val editConcepto = view.findViewById<EditText>(R.id.etConcepto)
+            val editImporte = view.findViewById<EditText>(R.id.etImporte)
+
+            // 2. Configurar spinner (select)
+            val categorias = listOf("Facturas", "Casa", "Ocio", "Alimentacion", "Transporte", "Otros")
+            val adapter =
+                ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categorias)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerCategoria.adapter = adapter
+
+            //Tipo de movimiento
+            var tipo : String = ""
+
+            btnIngreso.setOnClickListener {
+                tipo = "Ingreso"
+            }
+
+            btnGasto.setOnClickListener {
+                tipo = "Gasto"
+
+            // 3. Listener del botón Guardar
+            btnGuardar.setOnClickListener {
+                val concepto = editConcepto.text.toString()
+                val importe = editImporte.text.toString().toDoubleOrNull()
+                val categoria = spinnerCategoria.selectedItem.toString()
+
+                if (concepto.isEmpty() || importe == null || tipo == "") {
+                    Toast.makeText(requireContext(), "Completa todos los campos", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
+                // TODO: EMPEZAR FUNCION DEL INSERT EN SUPABASE Y COMPOROBAR CORRECTO FUNCIONAMIENTO
+                    controlador.guardarMovimiento(tipo, concepto, importe, categoria, usuario?.id)
+
+                dialog.dismiss()
+            }
+
+            dialog.show()
+        }
     }
+
+
 
     companion object {
         /**

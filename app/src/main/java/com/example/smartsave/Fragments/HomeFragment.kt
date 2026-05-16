@@ -67,8 +67,8 @@ class HomeFragment : Fragment() {
             gastos_totales = controlador.obtenerTotalGas(usuario?.id)
             ingreso_mensual = controlador.obtenerIngresosMensual(usuario?.id)
 
-            binding.totGas.setText("$ingresos_totales €")
-            binding.totIng.setText("$gastos_totales €")
+            binding.totGas.setText("$gastos_totales €")
+            binding.totIng.setText("$ingresos_totales €")
             binding.ingresoMensual.text = "$ingreso_mensual €"
         }
 

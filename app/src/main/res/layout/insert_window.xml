@@ -1,0 +1,157 @@
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:background="@android:color/white"
+    android:layout_margin="10dp"
+    android:elevation="8dp"
+    android:clipToPadding="false">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Drag handle -->
+        <View
+            android:layout_width="40dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Título -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Editar movimiento"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Botones Ingreso / Gasto -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/btnIngreso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="↑ Ingreso"
+                android:textColor="@color/white"
+                android:paddingVertical="12dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+            <Button
+                android:id="@+id/btnGasto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="↓ Gasto"
+                android:textColor="@color/white"
+                android:paddingVertical="12dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+        </LinearLayout>
+
+        <!-- Label Concepto -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Concepto"
+            android:textSize="12sp"
+            android:layout_marginBottom="6dp" />
+
+        <!-- Campo Concepto -->
+        <EditText
+            android:id="@+id/etConcepto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Freelance"
+            android:textColor="@color/white"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="14dp"
+            android:inputType="text"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Fila Importe + Categoría -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <!-- Columna Importe -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Importe (€)"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="6dp" />
+
+                <EditText
+                    android:id="@+id/etImporte"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="320"
+                    android:textColor="@color/white"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="14dp"
+                    android:inputType="numberDecimal" />
+
+            </LinearLayout>
+
+            <!-- Columna Categoría -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Categoría"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="6dp" />
+
+                <Spinner
+                    android:id="@+id/spinnerCategoria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="14dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Botón Guardar -->
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar"
+            android:textColor="@color/white"
+            android:paddingVertical="14dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

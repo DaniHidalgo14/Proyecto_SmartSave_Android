@@ -94,4 +94,12 @@ class Controller {
             null
         }
     }
+
+    suspend fun calcularTotal(userId: Int?): Double {
+        val ingresoM = obtenerIngresosMensual(userId) ?: 0.0
+        val totalIngresos = obtenerTotalIng(userId) ?: 0.0
+        val totalGastos = obtenerTotalGas(userId) ?: 0.0
+
+        return (ingresoM + totalIngresos) - totalGastos
+    }
 }
