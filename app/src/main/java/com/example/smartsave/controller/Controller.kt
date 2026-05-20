@@ -2,6 +2,7 @@ package com.example.smartsave.controller
 
 import com.example.smartsave.model.IngresoMensual
 import com.example.smartsave.model.Movimiento
+import com.example.smartsave.model.MovimientoInsert
 import com.example.smartsave.model.Usuario
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
@@ -101,5 +102,18 @@ class Controller {
         val totalGastos = obtenerTotalGas(userId) ?: 0.0
 
         return (ingresoM + totalIngresos) - totalGastos
+    }
+
+    suspend fun guardarMovimiento(tipo : String, subcategoria : String, importe : Double,
+                                  categoria : String, id_usuario : Int?, fijo : Int){
+        val response = client.postgrest["Movimientos"].insert(
+            MovimientoInsert(tipo, importe, fijo, id_usuario!!, categoria, subcategoria)
+        )
+    }
+
+    suspend fun eliminarMovimientp(movId: Int?){
+        val response = client.postgrest["Movimientos"].delete {
+            filter { eq("id_mov", movId!!) }
+        }
     }
 }

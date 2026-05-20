@@ -14,3 +14,13 @@ data class Movimiento(
     @SerialName("Categoria") val categoria : String,
     @SerialName("Subcategoria") val subcategoria : String?
 ) : Serializable
+
+@JavaSerializable
+data class MovimientoInsert(
+    @SerialName("Tipo") val tipo : String,
+    @SerialName("Cantidad") val cantidad : Double,
+    @SerialName("Fijo") val fijo : Int,
+    @SerialName("id_usuario") val id_usuario : Int,
+    @SerialName("Categoria") val categoria : String,
+    @SerialName("Subcategoria") val subcategoria : String?
+) : Serializable

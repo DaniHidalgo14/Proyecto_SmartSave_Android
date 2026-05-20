@@ -6,13 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smartsave.R
+import com.example.smartsave.controller.Controller
 import com.example.smartsave.model.Movimiento
 
-class MovAdapter(private val lista : List<Movimiento>) : RecyclerView.Adapter<MovAdapter.ViewHolder>() {
-    //TODO: ARREGLAR PROBLEMA CON IVS DE LOS ITEMS DEL RECYCLER
+class MovAdapter(private val lista : List<Movimiento>,
+                 private val onEditClick : (Movimiento) -> Unit,
+                 private val onDeleteClick : (Movimiento) -> Unit) : RecyclerView.Adapter<MovAdapter.ViewHolder>() {
     private val listaIngresos = lista.filter { it.tipo.equals("Ingreso") }
     private val listaGastos = lista.filter { it.tipo.equals("Gasto") }
 
@@ -20,6 +24,7 @@ class MovAdapter(private val lista : List<Movimiento>) : RecyclerView.Adapter<Mo
     val sumGas = listaGastos.sumOf { it.cantidad }
 
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
+        val card = view.findViewById<CardView>(R.id.card)
         val imagen = view.findViewById<ImageView>(R.id.categoriaIV)
         val categoria = view.findViewById<TextView>(R.id.categoriaTv)
         val subcategoria = view.findViewById<TextView>(R.id.subcategoriaTv)
@@ -36,15 +41,15 @@ class MovAdapter(private val lista : List<Movimiento>) : RecyclerView.Adapter<Mo
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val movimiento = lista[position]
-        Log.d("DEBUG", "categoria: '${movimiento.categoria}' | tipo: '${movimiento.tipo}'")
+        val controller = Controller()
 
         when(movimiento.categoria.trim()){
-            "ALIMENTACION" -> holder.imagen.setImageResource(R.drawable.foodbuys_iv)
-            "TRANSPORTE" -> holder.imagen.setImageResource(R.drawable.transport_iv)
-            "HIPOTECA" -> holder.imagen.setImageResource(R.drawable.home_iv)
-            "FACTURAS" -> holder.imagen.setImageResource(R.drawable.invoice_iv)
-            "OCIO" -> holder.imagen.setImageResource(R.drawable.ocio_iv)
-            "OTROS" -> holder.imagen.setImageResource(R.drawable.otros_iv)
+            "Alimentacion" -> holder.imagen.setImageResource(R.drawable.foodbuys_iv)
+            "Transporte" -> holder.imagen.setImageResource(R.drawable.transport_iv)
+            "Hipoteca" -> holder.imagen.setImageResource(R.drawable.home_iv)
+            "Facturas" -> holder.imagen.setImageResource(R.drawable.invoice_iv)
+            "Ocio" -> holder.imagen.setImageResource(R.drawable.ocio_iv)
+            "Otros" -> holder.imagen.setImageResource(R.drawable.otros_iv)
         }
 
         holder.categoria.text = movimiento.categoria
@@ -70,6 +75,28 @@ class MovAdapter(private val lista : List<Movimiento>) : RecyclerView.Adapter<Mo
             holder.cantidad.setTextColor(Color.RED)
             holder.cantidad.text = "-${movimiento.cantidad} €"
             holder.barra.setBackgroundColor(Color.RED)
+        }
+
+        holder.card.setOnLongClickListener {
+            val popup = PopupMenu(holder.itemView.context, it)
+            popup.menuInflater.inflate(R.menu.menu_movimiento, popup.menu)
+
+            popup.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.btnEditar -> {
+                        onEditClick(movimiento)
+                        true
+                    }
+                    R.id.btnEliminar -> {
+                        onDeleteClick(movimiento)
+                        true
+                    }
+                    else -> false
+                }
+            }
+
+            popup.show()
+            true
         }
     }
 

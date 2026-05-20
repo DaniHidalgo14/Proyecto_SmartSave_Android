@@ -1,5 +1,6 @@
 package com.example.smartsave.Fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -42,7 +43,6 @@ private val binding get() = _binding!!
  * create an instance of this fragment.
  */
 class MovesFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
@@ -66,6 +66,7 @@ class MovesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val controlador = Controller()
+
         usuarioViewModel = ViewModelProvider(requireActivity())
             .get(UsuarioViewModel::class.java)
 
@@ -75,11 +76,26 @@ class MovesFragment : Fragment() {
         recycler.layoutManager = LinearLayoutManager(requireContext())
 
         lifecycleScope.launch {
-            var totalActual = BigDecimal(controlador.calcularTotal(usuario?.id)).setScale(2, RoundingMode.HALF_UP).toDouble()
+            var totalActual =
+                BigDecimal(controlador.calcularTotal(usuario?.id)).setScale(2, RoundingMode.HALF_UP)
+                    .toDouble()
             binding.tvTotal.text = "${totalActual}€"
 
-            var moves = controlador.obtenerMovimientos(usuario?.id)
-            adapter = MovAdapter(moves!!)
+            var moves = controlador.obtenerMovimientos(usuario?.id)!!
+
+            adapter = MovAdapter(
+                moves,
+                onEditClick = { mov : Movimiento ->
+                    lifecycleScope.launch {
+                        controlador.eliminarMovimientp(mov.id_mov)
+                    }
+                },
+                onDeleteClick = { mov : Movimiento ->
+                    lifecycleScope.launch {
+                        controlador.eliminarMovimientp(mov.id_mov)
+                    }
+                }
+            )
             recycler.adapter = adapter
         }
 
@@ -115,6 +131,8 @@ class MovesFragment : Fragment() {
 
             btnGasto.setOnClickListener {
                 tipo = "Gasto"
+            }
+            //TODO: Hacer que salgan mensajes informativos con las funciones de edicion y eliminacion
 
             // 3. Listener del botón Guardar
             btnGuardar.setOnClickListener {
@@ -127,8 +145,15 @@ class MovesFragment : Fragment() {
                     return@setOnClickListener
                 }
 
-                // TODO: EMPEZAR FUNCION DEL INSERT EN SUPABASE Y COMPOROBAR CORRECTO FUNCIONAMIENTO
-                    controlador.guardarMovimiento(tipo, concepto, importe, categoria, usuario?.id)
+                lifecycleScope.launch{
+                    controlador.guardarMovimiento(tipo, concepto, importe, categoria, usuario?.id, 0)
+                    AlertDialog.Builder(context)
+                        .setTitle("Error")
+                        .setMessage("No se pudo guardar el movimiento")
+                        .setPositiveButton("Aceptar", null)
+                        .show()
+
+                }
 
                 dialog.dismiss()
             }
