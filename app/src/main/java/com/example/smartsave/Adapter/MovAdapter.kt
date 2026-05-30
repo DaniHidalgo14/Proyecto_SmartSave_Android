@@ -14,14 +14,17 @@ import com.example.smartsave.R
 import com.example.smartsave.controller.Controller
 import com.example.smartsave.model.Movimiento
 
-class MovAdapter(private val lista : List<Movimiento>,
-                 private val onEditClick : (Movimiento) -> Unit,
-                 private val onDeleteClick : (Movimiento) -> Unit) : RecyclerView.Adapter<MovAdapter.ViewHolder>() {
+class MovAdapter(
+    private var lista: List<Movimiento>,
+    private val onEditClick: (Movimiento) -> Unit,
+    private val onDeleteClick: (Movimiento) -> Unit
+) : RecyclerView.Adapter<MovAdapter.ViewHolder>() {
+
     private val listaIngresos = lista.filter { it.tipo.equals("Ingreso") }
     private val listaGastos = lista.filter { it.tipo.equals("Gasto") }
 
-    val sumIng = listaIngresos.sumOf { it.cantidad }
-    val sumGas = listaGastos.sumOf { it.cantidad }
+    var sumIng = listaIngresos.sumOf { it.cantidad }
+    var sumGas = listaGastos.sumOf { it.cantidad }
 
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
         val card = view.findViewById<CardView>(R.id.card)
@@ -43,16 +46,18 @@ class MovAdapter(private val lista : List<Movimiento>,
         val movimiento = lista[position]
         val controller = Controller()
 
-        when(movimiento.categoria.trim()){
-            "Alimentacion" -> holder.imagen.setImageResource(R.drawable.foodbuys_iv)
-            "Transporte" -> holder.imagen.setImageResource(R.drawable.transport_iv)
-            "Hipoteca" -> holder.imagen.setImageResource(R.drawable.home_iv)
-            "Facturas" -> holder.imagen.setImageResource(R.drawable.invoice_iv)
-            "Ocio" -> holder.imagen.setImageResource(R.drawable.ocio_iv)
-            "Otros" -> holder.imagen.setImageResource(R.drawable.otros_iv)
+        when (movimiento.categoria) {
+            R.string.alimentacion -> holder.imagen.setImageResource(R.drawable.foodbuys_iv)
+            R.string.transporte -> holder.imagen.setImageResource(R.drawable.transport_iv)
+            R.string.hipoteca -> holder.imagen.setImageResource(R.drawable.home_iv)
+            R.string.factura -> holder.imagen.setImageResource(R.drawable.invoice_iv)
+            R.string.ocio -> holder.imagen.setImageResource(R.drawable.ocio_iv)
+            R.string.otros -> holder.imagen.setImageResource(R.drawable.otros_iv)
         }
 
-        holder.categoria.text = movimiento.categoria
+
+
+        holder.categoria.text = holder.itemView.context.getString(movimiento.categoria)
         if(movimiento.subcategoria != null) holder.subcategoria.text = movimiento.subcategoria
 
         if(movimiento.tipo.equals("Ingreso")){
@@ -103,4 +108,12 @@ class MovAdapter(private val lista : List<Movimiento>,
     override fun getItemCount(): Int {
         return lista.size
     }
+
+    fun actualizarLista(nuevaLista: List<Movimiento>) {
+        lista = nuevaLista
+        sumIng = lista.filter { it.tipo == "Ingreso" }.sumOf { it.cantidad }
+        sumGas = lista.filter { it.tipo == "Gasto" }.sumOf { it.cantidad }
+        notifyDataSetChanged()
+    }
+
 }

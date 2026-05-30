@@ -11,30 +11,27 @@
         android:id="@+id/headerCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        app:cardCornerRadius="28dp"
-        app:cardElevation="4dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
         app:cardBackgroundColor="?attr/colorSurface"
         app:strokeWidth="0dp"
-        android:layout_gravity="top">
+        android:layout_gravity="top"
+        android:layout_margin="12dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
-            android:paddingTop="32dp"
-            android:paddingBottom="24dp">
+            android:padding="14dp">
 
             <!-- Label -->
             <TextView
                 android:id="@+id/labelTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="MIS MOVIMIENTOS"
+                android:text="@string/titulo_mov"
                 android:textSize="11sp"
-                android:letterSpacing="0.08"
+                android:letterSpacing="0.06"
                 android:textColor="?attr/colorOnSurfaceVariant" />
 
             <!-- Total amount -->
@@ -42,141 +39,83 @@
                 android:id="@+id/tvTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0€"
-                android:textSize="38sp"
+                android:text="@string/total"
+                android:textSize="32sp"
                 android:textStyle="bold"
                 android:textColor="?attr/colorOnSurface"
-                android:layout_marginTop="4dp" />
+                android:layout_marginTop="2dp" />
 
             <!-- Subtitle -->
             <TextView
                 android:id="@+id/tvSubtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tu total disponible"
-                android:textSize="13sp"
+                android:text="@string/tv1"
+                android:textSize="12sp"
                 android:textColor="?attr/colorOnSurfaceVariant"
                 android:layout_marginTop="2dp" />
 
-            <!-- Action buttons row -->
-            <LinearLayout
+            <!-- Divisor -->
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                android:weightSum="2">
+                android:layout_height="0.5dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@color/divider" />
 
-                <!-- Gastos button -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btnGastos"
-                    android:layout_width="0dp"
-                    android:layout_height="52dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="6dp"
-                    app:cardCornerRadius="14dp"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="?attr/colorSurfaceVariant"
-                    app:strokeWidth="0dp"
-                    android:clickable="true"
-                    android:focusable="true">
+            <!-- Botón añadir movimiento -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnIngresos"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="?attr/colorSurfaceVariant"
+                app:strokeWidth="0dp"
+                android:clickable="true"
+                android:focusable="true">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="12dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp">
 
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            app:cardCornerRadius="8dp"
-                            app:cardBackgroundColor="?attr/colorOnSurface"
-                            app:cardElevation="0dp"
-                            app:strokeWidth="0dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="+"
-                                android:textColor="?attr/colorSurface"
-                                android:textSize="18sp"
-                                android:gravity="center"
-                                android:includeFontPadding="false" />
-
-                        </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardBackgroundColor="?attr/colorOnSurface"
+                        app:cardElevation="0dp"
+                        app:strokeWidth="0dp">
 
                         <TextView
-                            android:id="@+id/tvGastos"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Gastos"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            android:textColor="?attr/colorOnSurfaceVariant"
-                            android:layout_marginStart="8dp" />
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/anadir"
+                            android:textColor="?attr/colorSurface"
+                            android:textSize="18sp"
+                            android:gravity="center"
+                            android:includeFontPadding="false" />
 
-                    </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
-                </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:id="@+id/tvIngresos"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:text="@string/movimiento"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
 
-                <!-- Ingresos button -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btnIngresos"
-                    android:layout_width="0dp"
-                    android:layout_height="52dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="6dp"
-                    app:cardCornerRadius="14dp"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="?attr/colorSurfaceVariant"
-                    app:strokeWidth="0dp"
-                    android:clickable="true"
-                    android:focusable="true">
+                </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="12dp">
-
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            app:cardCornerRadius="8dp"
-                            app:cardBackgroundColor="?attr/colorOnSurface"
-                            app:cardElevation="0dp"
-                            app:strokeWidth="0dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="+"
-                                android:textColor="?attr/colorSurface"
-                                android:textSize="18sp"
-                                android:gravity="center"
-                                android:includeFontPadding="false" />
-
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <TextView
-                            android:id="@+id/tvIngresos"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Ingresos"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            android:textColor="?attr/colorOnSurfaceVariant"
-                            android:layout_marginStart="8dp" />
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-            </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
@@ -187,28 +126,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="260dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        android:paddingTop="220dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp">
 
-        <!-- Section label -->
+        <!-- Label recientes -->
         <TextView
             android:id="@+id/tvSectionLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="RECIENTES"
             android:textSize="11sp"
-            android:letterSpacing="0.08"
+            android:letterSpacing="0.06"
             android:textColor="?attr/colorOnSurfaceVariant"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="4dp"
             android:layout_marginStart="4dp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/movimientos"
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:overScrollMode="never"
-                android:clipToPadding="false" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/movimientos"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:clipToPadding="false"
+            android:padding="4dp" />
 
     </LinearLayout>
 

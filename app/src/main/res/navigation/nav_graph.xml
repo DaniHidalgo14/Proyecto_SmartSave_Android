@@ -6,16 +6,16 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.smartsave.Fragments.HomeFragment"
-        android:label="Inicio" />
+        android:label="@string/home" />
 
     <fragment
         android:id="@+id/movesFragment"
         android:name="com.example.smartsave.Fragments.MovesFragment"
-        android:label="Movimientos" />
+        android:label="@string/mov" />
 
     <fragment
         android:id="@+id/configFragment"
         android:name="com.example.smartsave.Fragments.ConfigFragment"
-        android:label="Configuracion" />
+        android:label="@string/config" />
 
 </navigation>

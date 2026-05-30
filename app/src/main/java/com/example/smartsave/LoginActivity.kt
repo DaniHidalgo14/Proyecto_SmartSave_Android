@@ -1,10 +1,9 @@
 package com.example.smartsave
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,11 +11,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.smartsave.controller.Controller
+import com.example.smartsave.model.BaseActivity
 import com.example.smartsave.model.Usuario
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -26,7 +27,6 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
-        //TODO: MIRAR LO DEL HINT COMO PONER EL LAYOUT
         var miUsuario : Usuario? = null
         val controlador = Controller()
         var btnAcceder = findViewById<Button>(R.id.button)
@@ -56,4 +56,15 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        var usuarioTxt = findViewById<TextInputEditText>(R.id.usuario)
+        var passWordTxt = findViewById<TextInputEditText>(R.id.password)
+
+        usuarioTxt.setText("")
+        passWordTxt.setText("")
+    }
+
 }

@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioButton
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -23,6 +26,7 @@ import com.example.smartsave.model.Movimiento
 import com.example.smartsave.model.Usuario
 import com.example.smartsave.model.UsuarioViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.radiobutton.MaterialRadioButton
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
 import java.math.RoundingMode
@@ -87,12 +91,25 @@ class MovesFragment : Fragment() {
                 moves,
                 onEditClick = { mov : Movimiento ->
                     lifecycleScope.launch {
-                        controlador.eliminarMovimientp(mov.id_mov)
+                        abrirDialogo(controlador, usuario, true, mov)
                     }
                 },
                 onDeleteClick = { mov : Movimiento ->
                     lifecycleScope.launch {
-                        controlador.eliminarMovimientp(mov.id_mov)
+                        val resultado = controlador.eliminarMovimientp(mov.id_mov)
+
+                        val mensaje = when (resultado) {
+                            is Controller.SupabaseResult.Success -> resultado.message
+                            is Controller.SupabaseResult.Error -> resultado.error
+                        }
+
+                        AlertDialog.Builder(context)
+                            .setTitle("Información")
+                            .setMessage(mensaje)
+                            .setPositiveButton("Aceptar", null)
+                            .show()
+
+                        refrescarMovimientos(controlador, usuario)
                     }
                 }
             )
@@ -103,64 +120,162 @@ class MovesFragment : Fragment() {
         //==== Ventana de insercion y edicion de movimientos =====
         //========================================================
         binding.btnIngresos.setOnClickListener {
-            val dialog = BottomSheetDialog(requireContext())
-            val view = layoutInflater.inflate(R.layout.insert_window, null)
-            dialog.setContentView(view)
-
-            // 1. Referencias a los elementos del layout del bottom sheet
-            val btnGuardar = view.findViewById<Button>(R.id.btnGuardar)
-            val btnIngreso = view.findViewById<Button>(R.id.btnIngreso)
-            val btnGasto = view.findViewById<Button>(R.id.btnGasto)
-            val spinnerCategoria = view.findViewById<Spinner>(R.id.spinnerCategoria)
-            val editConcepto = view.findViewById<EditText>(R.id.etConcepto)
-            val editImporte = view.findViewById<EditText>(R.id.etImporte)
-
-            // 2. Configurar spinner (select)
-            val categorias = listOf("Facturas", "Casa", "Ocio", "Alimentacion", "Transporte", "Otros")
-            val adapter =
-                ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categorias)
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinnerCategoria.adapter = adapter
-
-            //Tipo de movimiento
-            var tipo : String = ""
-
-            btnIngreso.setOnClickListener {
-                tipo = "Ingreso"
-            }
-
-            btnGasto.setOnClickListener {
-                tipo = "Gasto"
-            }
-            //TODO: Hacer que salgan mensajes informativos con las funciones de edicion y eliminacion
-
-            // 3. Listener del botón Guardar
-            btnGuardar.setOnClickListener {
-                val concepto = editConcepto.text.toString()
-                val importe = editImporte.text.toString().toDoubleOrNull()
-                val categoria = spinnerCategoria.selectedItem.toString()
-
-                if (concepto.isEmpty() || importe == null || tipo == "") {
-                    Toast.makeText(requireContext(), "Completa todos los campos", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
-                }
-
-                lifecycleScope.launch{
-                    controlador.guardarMovimiento(tipo, concepto, importe, categoria, usuario?.id, 0)
-                    AlertDialog.Builder(context)
-                        .setTitle("Error")
-                        .setMessage("No se pudo guardar el movimiento")
-                        .setPositiveButton("Aceptar", null)
-                        .show()
-
-                }
-
-                dialog.dismiss()
-            }
-
-            dialog.show()
+            abrirDialogo(controlador, usuario, false)
         }
     }
+
+    fun abrirDialogo(controlador : Controller, usuario : Usuario?, editar : Boolean, mov : Movimiento? = null){
+        val dialog = BottomSheetDialog(requireContext())
+        val view = layoutInflater.inflate(R.layout.insert_window, null)
+        dialog.setContentView(view)
+
+        // 1. Referencias a los elementos del layout del bottom sheet
+        val btnGuardar = view.findViewById<Button>(R.id.btnGuardar)
+        val btnIngreso = view.findViewById<Button>(R.id.btnIngreso)
+        val btnGasto = view.findViewById<Button>(R.id.btnGasto)
+        val fijoBtn = view.findViewById<MaterialRadioButton>(R.id.fijoBtn)
+        val spinnerCategoria = view.findViewById<Spinner>(R.id.spinnerCategoria)
+        val editConcepto = view.findViewById<EditText>(R.id.etConcepto)
+        val editImporte = view.findViewById<EditText>(R.id.etImporte)
+
+        val categorias = listOf(
+            R.string.factura,
+            R.string.hipoteca,
+            R.string.ocio,
+            R.string.alimentacion,
+            R.string.transporte,
+            R.string.otros
+        )
+
+        if (editar && mov != null) {
+
+            // Concepto
+            editConcepto.setText(mov.subcategoria)
+
+            // Importe
+            editImporte.setText(mov.cantidad.toString())
+
+            // Tipo
+            if (mov.tipo == "Ingreso") {
+                btnIngreso.performClick()
+            } else {
+                btnGasto.performClick()
+            }
+
+            // Fijo
+            fijoBtn.isChecked = mov.fijo == 1
+
+            // Categoría (tienes un array de recursos, así que hay que buscar el índice)
+            val indexCategoria = categorias.indexOf(mov.categoria)
+            if (indexCategoria >= 0) {
+                spinnerCategoria.setSelection(indexCategoria)
+            }
+        }
+
+        //Array de categorias y spinner
+        val adapter = object : ArrayAdapter<Int>(
+            requireContext(),
+            android.R.layout.simple_dropdown_item_1line,
+            categorias
+        ) {
+            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                val view = super.getView(position, convertView, parent)
+                (view as TextView).text = context.getString(categorias[position])
+                return view
+            }
+
+            override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                val view = super.getDropDownView(position, convertView, parent)
+                (view as TextView).text = context.getString(categorias[position])
+                return view
+            }
+        }
+        spinnerCategoria.adapter = adapter
+
+        //Tipo de movimiento y si es fijo o no
+        var tipo : String = ""
+        var fijo : Int = 0
+
+        btnIngreso.setOnClickListener {
+            tipo = "Ingreso"
+        }
+
+        btnGasto.setOnClickListener {
+            tipo = "Gasto"
+        }
+
+        fijoBtn.setOnClickListener {
+            fijo = 1
+        }
+
+        // 3. Listener del botón Guardar
+        btnGuardar.setOnClickListener {
+            var concepto = editConcepto.text.toString()
+            var importe = editImporte.text.toString().toDoubleOrNull()
+            var categoria = categorias[spinnerCategoria.selectedItemPosition]
+
+
+            if (concepto.isEmpty() || importe == null || tipo.isEmpty()) {
+                Toast.makeText(requireContext(), "Completa todos los campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            lifecycleScope.launch{
+
+                val resultado: Controller.SupabaseResult<Boolean> =
+                    if (editar && mov != null) {
+                        val movActualizado = mov.copy(
+                            subcategoria = concepto,
+                            cantidad = importe,
+                            categoria = categoria,
+                            tipo = tipo,
+                            fijo = fijo
+                        )
+
+                        controlador.editarMovimiento(movActualizado)
+                    } else {
+                        controlador.guardarMovimiento(
+                            tipo,
+                            concepto,
+                            importe,
+                            categoria,
+                            usuario?.id,
+                            fijo
+                        )
+                    }
+
+
+                val mensaje = when (resultado) {
+                    is Controller.SupabaseResult.Success -> resultado.message
+                    is Controller.SupabaseResult.Error -> resultado.error
+                }
+
+                AlertDialog.Builder(context)
+                    .setTitle("Informacion")
+                    .setMessage(mensaje)
+                    .setPositiveButton("Aceptar", null)
+                    .show()
+
+                refrescarMovimientos(controlador, usuario)
+
+            }
+
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+    private suspend fun refrescarMovimientos(controlador: Controller, usuario: Usuario?) {
+        val nuevosMovimientos = controlador.obtenerMovimientos(usuario?.id)!!
+        adapter.actualizarLista(nuevosMovimientos)
+        var totalActual =
+            BigDecimal(controlador.calcularTotal(usuario?.id)).setScale(2, RoundingMode.HALF_UP)
+                .toDouble()
+        binding.tvTotal.text = "${totalActual}€"
+    }
+
+
 
 
 

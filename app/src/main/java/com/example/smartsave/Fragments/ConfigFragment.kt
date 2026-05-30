@@ -1,16 +1,22 @@
 package com.example.smartsave.Fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.smartsave.R
+import com.example.smartsave.controller.LocaleHelper
+import com.example.smartsave.databinding.FragmentConfigBinding
+import com.example.smartsave.databinding.FragmentMovesBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+private var _binding: FragmentConfigBinding? = null
+private val binding get() = _binding!!
 
 /**
  * A simple [Fragment] subclass.
@@ -35,7 +41,29 @@ class ConfigFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_config, container, false)
+        _binding = FragmentConfigBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        // Opción A — Toggle simple
+        // Opción B — AlertDialog con varios idiomas
+        val idiomas = arrayOf("Español", "English")
+        val codigos  = arrayOf("es", "en")
+
+        binding.btnCambiarIdioma.setOnClickListener {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Idioma / Language")
+                .setItems(idiomas) { _, which ->
+                    LocaleHelper.setLocale(requireContext(), codigos[which])
+                    requireActivity().recreate()
+                }
+                .show()
+        }
+
+        binding.logout.setOnClickListener {
+            requireActivity().finish()
+        }
     }
 
     companion object {

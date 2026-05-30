@@ -1,5 +1,6 @@
 package com.example.smartsave
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,11 +12,12 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.smartsave.Fragments.ConfigFragment
 import com.example.smartsave.Fragments.HomeFragment
 import com.example.smartsave.Fragments.MovesFragment
+import com.example.smartsave.model.BaseActivity
 import com.example.smartsave.model.Usuario
 import com.example.smartsave.model.UsuarioViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private lateinit var usuarioViewModel: UsuarioViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(0, systemBars.top, 0, 0)
             insets
         }
-        //TODO: ARREGLAR UN POCO EL LAYOUT Y COMENZAR CON LAS VENTANAS DE INSERTS Y EDICIONES
+
         val usuario = intent.getSerializableExtra("Usuario") as Usuario
 
         usuarioViewModel = ViewModelProvider(this).get(UsuarioViewModel::class.java)
@@ -38,5 +40,10 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottomNav.setupWithNavController(navController)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        finish() // destruye la actividad al ir a segundo plano
     }
 }

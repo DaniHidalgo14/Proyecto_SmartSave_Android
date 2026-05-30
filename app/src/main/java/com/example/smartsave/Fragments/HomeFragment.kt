@@ -1,17 +1,27 @@
 package com.example.smartsave.Fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Spinner
+import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.smartsave.R
 import com.example.smartsave.controller.Controller
 import com.example.smartsave.databinding.FragmentHomeBinding
+import com.example.smartsave.model.Movimiento
 import com.example.smartsave.model.Usuario
 import com.example.smartsave.model.UsuarioViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.radiobutton.MaterialRadioButton
 import kotlinx.coroutines.launch
 
 // TODO: Rename parameter arguments, choose names that match
@@ -70,8 +80,72 @@ class HomeFragment : Fragment() {
             binding.totGas.setText("$gastos_totales €")
             binding.totIng.setText("$ingresos_totales €")
             binding.ingresoMensual.text = "$ingreso_mensual €"
+
+            if (ingreso_mensual == null || ingreso_mensual == 0.0) {
+                abrirDialogo(controlador, usuario?.id, true)
+            }
         }
 
+        binding.editarIngBtn.setOnClickListener {
+            abrirDialogo(controlador, usuario?.id, false)
+        }
+
+    }
+
+    fun abrirDialogo(controlador : Controller, id_usuario : Int?, cancelable : Boolean){
+        val dialog = BottomSheetDialog(requireContext())
+        if (cancelable){
+            dialog.setCancelable(false)
+            dialog.setCanceledOnTouchOutside(false)
+        }
+
+        val view = layoutInflater.inflate(R.layout.insert_ing_view, null)
+        dialog.setContentView(view)
+        var ingreso_actual : Double? = 0.0
+
+        // 1. Referencias a los elementos del layout del bottom sheet
+        val btnGuardar = view.findViewById<Button>(R.id.btnGuardar)
+        val editImporte = view.findViewById<EditText>(R.id.etImporte)
+
+        lifecycleScope.launch {
+            ingreso_actual = controlador.obtenerIngresosMensual(id_usuario)
+            editImporte.setText("${ingreso_actual}")
+        }
+
+        // 3. Listener del botón Guardar
+        btnGuardar.setOnClickListener {
+            var importe = editImporte.text.toString().toDoubleOrNull()
+
+
+            if (importe == null) {
+                Toast.makeText(requireContext(), "Completa todos los campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            lifecycleScope.launch{
+
+                val resultado = controlador.editarIngreso(importe, id_usuario)
+
+                val mensaje = when (resultado) {
+                    is Controller.SupabaseResult.Success -> resultado.message
+                    is Controller.SupabaseResult.Error -> resultado.error
+                }
+
+                AlertDialog.Builder(context)
+                    .setTitle("Informacion")
+                    .setMessage(mensaje)
+                    .setPositiveButton("Aceptar", null)
+                    .show()
+
+                var ingreso_mensual = controlador.obtenerIngresosMensual(id_usuario)
+                binding.ingresoMensual.text = "$ingreso_mensual €"
+
+            }
+
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     companion object {

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Strings de la pantalla de login -->
+    <string name="app_name">SmartSave</string>
+    <string name="titulo_login">SmartSave</string>
+    <string name="subtitulo_login">Your safest finance app</string>
+    <string name="tituloCard">Sign In</string>
+    <string name="usuario">Username: </string>
+    <string name="contraseña">Password: </string>
+    <string name="text_botom">Enter</string>
+    <string name="text_registro">Sign Up</string>
+    <string name="contrase_a">PASSWORD</string>
+    <string name="usuario_a">USER</string>
+
+    <!-- Strings pantalla de Movimientos -->
+    <string name="titulo_mov">MY TRANSACTIONS</string>
+    <string name="total">€0 </string>
+    <string name="tv1">Your available balance</string>
+    <string name="anadir">+</string>
+    <string name="movimiento">Transaction</string>
+    <string name="recientes_tv">RECENT</string>
+
+    <!-- Strings fagment de inicio -->
+    <string name="titulo_frag">Welcome</string>
+    <string name="grafico_frag">Charts</string>
+    <string name="texto_ing_frag">Your fixed monthly income: </string>
+    <string name="tot_ing_frag">Total income: </string>
+    <string name="toto_gas_frag">Total expenses: </string>
+    <string name="objetivo_frag">My savings goal</string>
+    <string name="totales">€0</string>
+
+    <!-- Strings fragment de configuracion -->
+    <string name="idioma">Change language</string>
+    <string name="nombreapp">SS</string>
+    <string name="usuario_tv">Your user</string>
+    <string name="general">LANGUAGE</string>
+    <string name="usuario_email_com">user@email.com</string>
+    <string name="soporte">SUPPORT</string>
+    <string name="contacta_con_nosotros">Contact with us</string>
+    <string name="te_respondemos_en_24_48_h">Your answer will be in 24h - 48h</string>
+    <string name="escribe_tu_mensaje_aqu">Write here your message...</string>
+    <string name="enviar_mensaje">Send message</string>
+    <string name="cuenta">ACCOUNT</string>
+    <string name="smartsave_version">SmartSave v1.0.0</string>
+    <string name="cerrar_sesi_n">Log out</string>
+
+    <!-- Insert Window String -->
+    <string name="titulo">Edit transaction</string>
+    <string name="insert_ing">↑ Income</string>
+    <string name="insert_gas">↓ Expense</string>
+    <string name="importe_tv">Amount (€)</string>
+    <string name="categoria">Category: </string>
+    <string name="guardarBtn">Save</string>
+    <string name="concepto">CONCEPT</string>
+
+    <!--Menu de edicion y eliminacion -->
+    <string name="menu_edicion">Edit</string>
+    <string name="menu_eliminar">Delete</string>
+
+    <!-- Bottom Menu String -->
+    <string name="home">Home</string>
+    <string name="mov">Transactions</string>
+    <string name="config">Settings</string>
+    <string name="fijo">Regular</string>
+
+    <!-- Strings de categorías de movimiento -->
+    <string name="factura">Bills</string>
+    <string name="hipoteca">Mortgage</string>
+    <string name="transporte">Transport</string>
+    <string name="alimentacion">Alimentation</string>
+    <string name="ocio">Leisure</string>
+    <string name="otros">Others</string>
+    <string name="text_window_edit">Edit monthly income</string>
+
+    <string-array name="categorias">
+        <item>@string/factura</item>
+        <item>@string/hipoteca</item>
+        <item>@string/ocio</item>
+        <item>@string/alimentacion</item>
+        <item>@string/transporte</item>
+        <item>@string/otros</item>
+    </string-array>
+</resources>

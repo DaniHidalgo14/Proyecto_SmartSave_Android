@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
-        android:title="Inicio"
+        android:title="@string/home"
         android:icon="@drawable/main_iv"/>
 
     <item
         android:id="@+id/movesFragment"
-        android:title="Movimientos"
+        android:title="@string/mov"
         android:icon="@drawable/movimientos_iv"/>
 
     <item
         android:id="@+id/configFragment"
-        android:title="Configuración"
+        android:title="@string/config"
         android:icon="@drawable/iv_config"/>
 </menu>

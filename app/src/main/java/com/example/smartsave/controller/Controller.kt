@@ -15,6 +15,12 @@ class Controller {
         install(Postgrest)
     }
 
+    sealed class SupabaseResult<out T> {
+        data class Success<T>(val data: T, val message: String) : SupabaseResult<T>()
+        data class Error(val error: String) : SupabaseResult<Nothing>()
+    }
+
+
     suspend fun obtenerAcceso(usuario : String, password : String) : Usuario? {
         return try{
             var result = client.postgrest["Usuario"].select {
@@ -105,15 +111,55 @@ class Controller {
     }
 
     suspend fun guardarMovimiento(tipo : String, subcategoria : String, importe : Double,
-                                  categoria : String, id_usuario : Int?, fijo : Int){
-        val response = client.postgrest["Movimientos"].insert(
-            MovimientoInsert(tipo, importe, fijo, id_usuario!!, categoria, subcategoria)
-        )
+                                  categoria : Int, id_usuario : Int?, fijo : Int) : SupabaseResult<Boolean>{
+        return try {
+            val response = client.postgrest["Movimientos"].insert(
+                MovimientoInsert(tipo, importe, fijo, id_usuario!!, categoria, subcategoria)
+            )
+            SupabaseResult.Success(true, "Movimiento guardado correctamente")
+        }catch (e : Exception){
+            SupabaseResult.Error("Error al guardar: ${e.message}")
+        }
     }
 
-    suspend fun eliminarMovimientp(movId: Int?){
-        val response = client.postgrest["Movimientos"].delete {
-            filter { eq("id_mov", movId!!) }
+    suspend fun eliminarMovimientp(movId: Int?) : SupabaseResult<Boolean> {
+        return try{
+            var response = client.postgrest["Movimientos"].delete {
+                filter { eq("id_mov", movId!!) }
+            }
+            SupabaseResult.Success(true, "Movimiento eliminado correctamente")
+        }catch(e : Exception){
+            SupabaseResult.Error("Error al eliminar: ${e.message}")
+        }
+    }
+
+    suspend fun editarMovimiento(mov : Movimiento) : SupabaseResult<Boolean>{
+        return try {
+            var response = client.postgrest["Movimientos"]
+                .update(mov){
+                    filter {
+                        eq("id_mov", mov.id_mov)
+                    }
+                }
+            SupabaseResult.Success(true, "Movimiento actualizado correctamente")
+        }catch (e : Exception){
+            SupabaseResult.Error("Error al eliminar: ${e.message}")
+        }
+    }
+
+    suspend fun editarIngreso(ing : Double, id : Int?) : SupabaseResult<Boolean>{
+        return try {
+            var response = client.postgrest["Ingreso_mensual"]
+                .update(
+                    mapOf("Ingreso" to ing)
+                ){
+                    filter{
+                        eq("id_usuario", id!!)
+                    }
+                }
+            SupabaseResult.Success(true, "Ingreso mensual actualizado correctamente")
+        }catch(e : Exception){
+            SupabaseResult.Error("Error al eliminar: ${e.message}")
         }
     }
 }

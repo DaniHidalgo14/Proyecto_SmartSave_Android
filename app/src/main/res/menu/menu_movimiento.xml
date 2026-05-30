@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/btnEditar" android:title="Editar" android:icon="@drawable/edit_iv" />
-    <item android:id="@+id/btnEliminar" android:title="Eliminar" android:src="@drawable/eliminar_iv"/>
+    <item android:id="@+id/btnEditar" android:title="@string/menu_edicion" android:icon="@drawable/edit_iv" />
+    <item android:id="@+id/btnEliminar" android:title="@string/menu_eliminar" android:src="@drawable/eliminar_iv"/>
 </menu>

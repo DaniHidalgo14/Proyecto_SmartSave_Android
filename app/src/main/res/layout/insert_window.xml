@@ -1,6 +1,5 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="20dp"
@@ -26,7 +25,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Editar movimiento"
+            android:text="@string/titulo"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -45,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginEnd="8dp"
-                android:text="↑ Ingreso"
+                android:text="@string/insert_ing"
                 android:textColor="@color/white"
                 android:paddingVertical="12dp"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
@@ -56,32 +55,72 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="8dp"
-                android:text="↓ Gasto"
+                android:text="@string/insert_gas"
                 android:textColor="@color/white"
                 android:paddingVertical="12dp"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
         </LinearLayout>
 
-        <!-- Label Concepto -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="12sp"
-            android:layout_marginBottom="6dp" />
-
-        <!-- Campo Concepto -->
-        <EditText
-            android:id="@+id/etConcepto"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="@color/white"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="14dp"
-            android:inputType="text"
-            android:layout_marginBottom="16dp" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <!-- Columna Importe -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="12dp">
+
+                <!-- Label Concepto -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/concepto"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="6dp" />
+
+                <!-- Campo Concepto -->
+                <EditText
+                    android:id="@+id/etConcepto"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="14dp"
+                    android:inputType="text"
+                    android:layout_marginBottom="16dp" />
+
+            </LinearLayout>
+
+            <!-- Columna Categoría -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fijo"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginLeft="40dp"/>
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/fijoBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <!-- Fila Importe + Categoría -->
         <LinearLayout
@@ -101,7 +140,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Importe (€)"
+                    android:text="@string/importe_tv"
                     android:textSize="12sp"
                     android:layout_marginBottom="6dp" />
 
@@ -109,7 +148,7 @@
                     android:id="@+id/etImporte"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="320"
+                    android:text=""
                     android:textColor="@color/white"
                     android:paddingHorizontal="16dp"
                     android:paddingVertical="14dp"
@@ -127,7 +166,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Categoría"
+                    android:text="@string/categoria"
                     android:textSize="12sp"
                     android:layout_marginBottom="6dp" />
 
@@ -147,7 +186,7 @@
             android:id="@+id/btnGuardar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Guardar"
+            android:text="@string/guardarBtn"
             android:textColor="@color/white"
             android:paddingVertical="14dp"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
